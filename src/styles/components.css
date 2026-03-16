@@ -1,0 +1,128 @@
+/**
+ * Component Utility Classes
+ * 
+ * Reusable layout and component utilities for the design system.
+ */
+
+/* === Stack Utilities === */
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap);
+}
+
+.stack-sm {
+    gap: var(--space-3);
+}
+
+.stack-lg {
+    gap: var(--section-gap);
+}
+
+/* === Card Base === */
+
+.card-base {
+    background-color: var(--color-bg-surface);
+    border-radius: var(--radius-card);
+    border: var(--border-card);
+    box-shadow: var(--shadow-card);
+}
+
+.card-pad {
+    padding: var(--card-pad);
+}
+
+/* === Container Utilities === */
+
+.container-content {
+    max-width: var(--container-content);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-wide {
+    max-width: var(--container-wide);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-max {
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === Page Shell === */
+
+.page-shell {
+    padding-bottom: 5rem;
+    /* Space for footer */
+}
+
+.page-shell-pad {
+    padding-left: var(--page-pad-x);
+    padding-right: var(--page-pad-x);
+}
+
+/* === Section Divider === */
+
+.section-divider {
+    height: 1px;
+    background-color: var(--color-border-default);
+    margin: var(--section-gap) 0;
+}
+
+/* === Icon Container === */
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-control);
+    flex-shrink: 0;
+}
+
+.icon-container-sm {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* === Flex Utilities === */
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-start {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* === Gap Utilities === */
+
+.gap-2 {
+    gap: var(--space-2);
+}
+
+.gap-3 {
+    gap: var(--space-3);
+}
+
+.gap-4 {
+    gap: var(--space-4);
+}
+
+.gap-6 {
+    gap: var(--space-6);
+}

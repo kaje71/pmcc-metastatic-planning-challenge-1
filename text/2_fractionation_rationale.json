@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "page": {
+    "id": "fractionation_rationale",
+    "order": 2,
+    "nav_label": "40 Gy/10 fx",
+    "title": "Supplementary material",
+    "subtitle": "Regimen rationale, radiobiology, scoring methodology, and evidence"
+  },
+  "paper_metadata": {
+    "type": "Original Article",
+    "issn": "pISSN 2234-1900 · eISSN 2234-3156",
+    "citation": "Radiat Oncol J 2025;43(4):188-194",
+    "doi": "https://doi.org/10.3857/roj.2025.00346",
+    "doi_url": "https://doi.org/10.3857/roj.2025.00346",
+    "title": "Efficacy and safety of high-dose hypofractionated palliative radiotherapy (40 Gy in 10 daily fractions) for non–small cell lung cancer",
+    "authors": [
+      "James C. H. Chow¹",
+      "Jeffrey C. F. Lui¹",
+      "Chris K. C. Tong¹",
+      "Anthony H. P. Tam¹",
+      "Jeffrey C. H. Chan¹",
+      "Jeannie Y. K. Chik¹",
+      "Gavin T. C. Cheung²",
+      "Ka Man Cheung¹",
+      "Luke T. Y. Lee¹",
+      "Kam Hung Wong¹",
+      "Kwok Hung Au¹"
+    ],
+    "affiliations": [
+      "¹ Department of Clinical Oncology, Queen Elizabeth Hospital, Hong Kong SAR, China",
+      "² Department of Oncology, United Christian Hospital, Hong Kong SAR, China"
+    ]
+  },
+  "sections": [],
+  "crosslinks": {
+    "next": null,
+    "prev": {
+      "page_id": "calculator",
+      "label": "Back: Calculator"
+    }
+  }
+}

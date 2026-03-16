@@ -1,0 +1,218 @@
+/**
+ * Design System Tokens for PalLung Planning Challenge
+ * 
+ * Peter Mac brand-aligned color palette and design tokens.
+ * Source: Extracted from Peter Mac website and organizational materials.
+ */
+
+/* P1: Bundled Inter font for offline/SharePoint deployment */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../assets/fonts/Inter-Variable.woff2') format('woff2');
+}
+
+:root {
+    /* === Peter Mac Brand Colors === */
+
+    /* Primary Purple Scale */
+    --pmac-900: #290d53;
+    --pmac-800: #532d7c;
+    --pmac-700: #431e76;
+    --pmac-600: #612399;
+    --pmac-500: #7b2cb8;
+    --pmac-100: #f3e8ff;
+    /* Added for UI backgrounds */
+    --pmac-50: #faf5ff;
+    /* Added for subtler backgrounds */
+
+    /* Accent Colors */
+    --pmac-accent: #8736b3;
+    --pmac-magenta: #a03090;
+
+    /* === Semantic Colors === */
+
+    /* Backgrounds */
+    --color-bg-primary: #f5f5f9;
+    --color-bg-secondary: #ffffff;
+    --color-bg-surface: #ffffff;
+    --color-bg-elevated: #ffffff;
+
+    /* Gradients */
+    --pmac-gradient-main: linear-gradient(135deg, var(--pmac-900) 0%, var(--pmac-800) 40%, var(--pmac-magenta) 100%);
+
+    /* Text */
+    --color-text-primary: #111111;
+    --color-text-secondary: #4a4a4a;
+    --color-text-muted: #4b5563;
+    /* Darkened from #6b7280 for better contrast */
+    --color-text-inverse: #ffffff;
+
+    /* Heading Typography */
+    --font-heading-tracking: -0.025em;
+    /* Tight tracking for headings */
+
+    /* Borders */
+    --color-border-default: #e5e7eb;
+    --color-border-muted: #f3f4f6;
+    --color-border-focus: var(--pmac-accent);
+
+    /* Status Colors - Peter Mac Brand Aligned */
+    --color-success: #0d9488;
+    --color-success-bg: #ccfbf1;
+    --color-warning: #b45309;
+    --color-warning-bg: #fef3c7;
+    --color-error: #be185d;
+    --color-error-bg: #fce7f3;
+    --color-info: #6366f1;
+    --color-info-bg: #e0e7ff;
+
+    /* Grading Colors - Bold & Saturated for Visual Impact */
+    --grading-unacceptable: #dc2626;
+    /* Vivid red - unmistakable fail */
+    --grading-marginal: #f97316;
+    /* Bright orange - attention needed */
+    --grading-acceptable: #facc15;
+    /* Bold yellow - room for improvement */
+    --grading-good: #22c55e;
+    /* Vibrant green - on track */
+    --grading-ideal: #10b981;
+    /* Emerald - excellent */
+
+    /* Interactive States */
+    --color-interactive: var(--pmac-600);
+    --color-interactive-hover: var(--pmac-700);
+    --color-interactive-active: var(--pmac-800);
+
+    /* === Typography === */
+
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* Font Sizes */
+    --text-xs: 0.75rem;
+    /* 12px */
+    --text-sm: 0.875rem;
+    /* 14px */
+    --text-base: 1rem;
+    /* 16px */
+    --text-lg: 1.125rem;
+    /* 18px */
+    --text-xl: 1.25rem;
+    /* 20px */
+    --text-2xl: 1.5rem;
+    /* 24px */
+    --text-3xl: 1.875rem;
+    /* 30px */
+
+    /* Line Heights */
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.625;
+
+    /* === Layout Tokens === */
+
+    --container-max: 1240px;
+    --container-content: 896px;
+    --container-wide: 1024px;
+    --page-pad-x: 2rem;
+    /* 32px */
+    --page-pad-y: 2rem;
+    /* 32px */
+    --section-gap: 2rem;
+    /* 32px */
+    --card-gap: 1rem;
+    /* 16px */
+    --card-pad: 1.5rem;
+    /* 24px */
+
+    /* === Card Tokens === */
+
+    --radius-card: 1.125rem;
+    /* 18px */
+    --radius-control: 0.75rem;
+    /* 12px */
+    --border-card: 1px solid rgba(15, 23, 42, 0.08);
+    --shadow-card: 0 1px 3px 0 rgb(83 45 124 / 0.04), 0 1px 2px -1px rgb(83 45 124 / 0.04);
+
+    /* === Spacing === */
+
+    --space-1: 0.25rem;
+    /* 4px */
+    --space-2: 0.5rem;
+    /* 8px */
+    --space-3: 0.75rem;
+    /* 12px */
+    --space-4: 1rem;
+    /* 16px */
+    --space-5: 1.25rem;
+    /* 20px */
+    --space-6: 1.5rem;
+    /* 24px */
+    --space-7: 2rem;
+    /* 32px */
+    --space-8: 2.5rem;
+    /* 40px */
+    --space-9: 3rem;
+    /* 48px */
+    --space-10: 4rem;
+    /* 64px */
+
+    /* === Border Radius === */
+
+    --radius-sm: 0.25rem;
+    /* 4px */
+    --radius-md: 0.5rem;
+    /* 8px */
+    --radius-lg: 0.75rem;
+    /* 12px */
+    --radius-xl: 1rem;
+    /* 16px */
+    --radius-full: 9999px;
+
+    /* === Shadows (Diffuse & Colored) === */
+
+    --shadow-sm: 0 1px 2px 0 rgb(83 45 124 / 0.05);
+    /* Tinted with brand color */
+    --shadow-md: 0 4px 6px -1px rgb(83 45 124 / 0.08), 0 2px 4px -2px rgb(83 45 124 / 0.08);
+    --shadow-lg: 0 10px 15px -3px rgb(83 45 124 / 0.08), 0 4px 6px -4px rgb(83 45 124 / 0.04);
+
+    /* === Focus Ring === */
+
+    --focus-ring-width: 3px;
+    --focus-ring-color: rgba(135, 54, 179, 0.4);
+    --focus-ring: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+
+    /* High-contrast focus for coloured backgrounds */
+    --focus-ring-high-contrast: 0 0 0 2px #ffffff, 0 0 0 4px #000000;
+
+    /* === Transitions === */
+
+    --transition-fast: 150ms ease;
+    --transition-normal: 200ms ease;
+    --transition-slow: 300ms ease;
+}
+
+/* === Focus States (Accessibility) === */
+
+*:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+/* Specific focus styles for inputs */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    border-color: var(--color-border-focus);
+    box-shadow: var(--focus-ring);
+}
+
+/* Button focus enhancement */
+button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}

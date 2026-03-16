@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@azure/static-web-apps-cli": "^2.0.8"
+  },
+  "_npx": {
+    "packages": [
+      "@azure/static-web-apps-cli"
+    ]
+  }
+}

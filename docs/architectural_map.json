@@ -1,0 +1,254 @@
+{
+    "schema_version": "2.0",
+    "document_purpose": "Single source of truth for site information architecture (IA) and the challenge-pack template. Content/UX decisions (layout, styling) live elsewhere.",
+    "last_updated": "2026-01-30",
+    "app": {
+        "name": "Planning Challenge Hub",
+        "audience": "Radiation therapy planners (RTs/dosimetrists/physicists) and educators",
+        "non_goals": [
+            "Not a clinical decision support system",
+            "Not a substitute for departmental protocols or peer review",
+            "No patient-identifying data should be stored or displayed"
+        ],
+        "design_constraints": [
+            "Content-first: pages are rendered from challenge-pack files",
+            "Deterministic scoring: a rubric file defines all metric thresholds and weights",
+            "Template-ready: a new challenge is created by copying a challenge pack and swapping only data/content files"
+        ]
+    },
+    "navigation": {
+        "primary_tabs": [
+            {
+                "order": 1,
+                "id": "introduction",
+                "label": "Introduction",
+                "route": "/:challengeId/introduction",
+                "source_file": "1_introduction.json"
+            },
+            {
+                "order": 2,
+                "id": "fractionation_rationale",
+                "label": "Rationale",
+                "route": "/:challengeId/40gy-10fx",
+                "source_file": "2_fractionation_rationale.json"
+            },
+            {
+                "order": 3,
+                "id": "clinical_case",
+                "label": "Clinical case",
+                "route": "/:challengeId/clinical-case",
+                "source_file": "3_clinical_case.json"
+            },
+            {
+                "order": 4,
+                "id": "planning_guide",
+                "label": "Planning guide",
+                "route": "/:challengeId/planning-guide",
+                "source_file": "4_planning_guide_scorecard.json"
+            },
+            {
+                "order": 5,
+                "id": "calculator",
+                "label": "Scoring calculator",
+                "route": "/:challengeId/calculator",
+                "source_file": "5_calculator.json"
+            }
+        ],
+        "secondary_navigation": [
+            {
+                "id": "history",
+                "label": "My attempts",
+                "route": "/:challengeId/history",
+                "notes": "Optional. If enabled, keep it out of the primary educational flow; expose from calculator page or user menu."
+            },
+            {
+                "id": "resources",
+                "label": "Resources",
+                "route": "/:challengeId/resources",
+                "notes": "Optional. Use for downloads (DICOM), reference PDFs, change logs."
+            }
+        ]
+    },
+    "challenge_pack_template": {
+        "folder_convention": "text/",
+        "required_files": [
+            {
+                "id": "introduction",
+                "path": "1_introduction.json",
+                "type": "page_content"
+            },
+            {
+                "id": "fractionation_rationale",
+                "path": "2_fractionation_rationale.json",
+                "type": "page_content"
+            },
+            {
+                "id": "clinical_case",
+                "path": "3_clinical_case.json",
+                "type": "page_content"
+            },
+            {
+                "id": "planning_guide",
+                "path": "4_planning_guide_scorecard.json",
+                "type": "page_content"
+            },
+            {
+                "id": "calculator",
+                "path": "5_calculator.json",
+                "type": "rubric_and_calculator_copy"
+            },
+            {
+                "id": "golden_case",
+                "path": "golden_case.json",
+                "type": "golden_case_fixture"
+            }
+        ],
+        "optional_files": [
+            {
+                "id": "resources_manifest",
+                "path": "resources.json",
+                "type": "resource_index"
+            },
+            {
+                "id": "downloads",
+                "path": "downloads/",
+                "type": "assets"
+            },
+            {
+                "id": "references",
+                "path": "references.bib",
+                "type": "citations"
+            },
+            {
+                "id": "images",
+                "path": "images/",
+                "type": "assets"
+            }
+        ],
+        "what_changes_per_new_challenge": [
+            "Challenge metadata (title, site, modality/technique, prescription, difficulty)",
+            "Clinical case narrative and literature summary",
+            "Planning guide: structures, hurdles, protocol notes",
+            "Rubric thresholds/weights and any safety-gate metrics",
+            "Resource links (dataset, reference PDFs)",
+            "Swap the five JSON files in text/ to the new challenge pack"
+        ],
+        "what_should_not_change": [
+            "Primary tab order and intent (concept → regimen rationale → case → planning guide → scoring)",
+            "Rubric evaluation semantics (bins ordered worst→best; points summed)",
+            "Privacy rules (no PHI; attempts store metrics only)"
+        ]
+    },
+    "content_schemas": {
+        "page_content": {
+            "file_extension": ".json",
+            "top_level_fields_required": [
+                "schema_version",
+                "page",
+                "sections",
+                "crosslinks"
+            ],
+            "page_object_required_fields": [
+                "id",
+                "title",
+                "nav_label",
+                "order"
+            ],
+            "section_object_required_fields": [
+                "id",
+                "title",
+                "body_markdown_lines"
+            ],
+            "section_object_optional_fields": [
+                "type",
+                "callout_style",
+                "bullets",
+                "tables",
+                "references"
+            ],
+            "notes": [
+                "Use body_markdown_lines to avoid escaping newlines in JSON. Render by joining with \\n.",
+                "Keep content purely textual/semantic; do not embed layout instructions (columns, colours, pixel sizes)."
+            ]
+        },
+        "rubric": {
+            "file_extension": ".json",
+            "top_level_fields_required": [
+                "schema_version",
+                "challenge",
+                "metrics"
+            ],
+            "metric_required_fields": [
+                "id",
+                "weight",
+                "structure",
+                "statistic",
+                "unit",
+                "direction",
+                "bins"
+            ],
+            "metric_optional_fields": [
+                "category",
+                "hard_gate",
+                "display_name",
+                "notes"
+            ],
+            "bin_required_fields": [
+                "label"
+            ],
+            "bin_threshold_fields": [
+                "lt",
+                "lte",
+                "gt",
+                "gte"
+            ],
+            "notes": [
+                "Bins must be mutually exclusive and collectively cover the expected value range.",
+                "direction controls comparison logic: 'higher_is_better' or 'lower_is_better'.",
+                "hard_gate=true metrics should be highlighted if failed."
+            ]
+        }
+    },
+    "scoring_and_history": {
+        "score_total_weight_expected": 150,
+        "attempt_storage": {
+            "location": "localStorage (or browser equivalent)",
+            "store_only": [
+                "challengeId",
+                "timestamp",
+                "metric_inputs (numeric only)",
+                "computed_score_breakdown",
+                "optional learner notes (no PHI)"
+            ],
+            "never_store": [
+                "Patient identifiers",
+                "DICOM files",
+                "Free-text that includes MRNs, names, dates of birth"
+            ]
+        }
+    },
+    "current_challenges": [
+        {
+            "challengeId": "palliative-lung-40gy-10fx",
+            "title": "Palliative Lung Planning Challenge",
+            "site": "Thorax (NSCLC high-dose palliative / oligoprogression)",
+            "prescription": {
+                "total_dose_Gy": 40,
+                "fractions": 10,
+                "dose_per_fraction_Gy": 4
+            },
+            "primary_learning_themes": [
+                "Short-turnaround complex thoracic VMAT planning",
+                "Balancing coverage vs spinal canal/oesophagus constraints in central disease",
+                "Controlling hotspots and conformity in larger fields"
+            ],
+            "files": {
+                "1_introduction": "1_introduction.json",
+                "2_fractionation_rationale": "2_fractionation_rationale.json",
+                "3_clinical_case": "3_clinical_case.json",
+                "4_planning_guide": "4_planning_guide_scorecard.json",
+                "5_calculator": "5_calculator.json"
+            }
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+{
+   "schema_version": "1.0",
+   "page": {
+      "id": "clinical_case",
+      "order": 3,
+      "nav_label": "Clinical Case",
+      "title": "Clinical Case",
+      "subtitle": "Case context and treatment approach"
+   },
+   "sections": [
+      {
+         "id": "patient_at_a_glance",
+         "title": "Patient at a Glance",
+         "body_markdown_lines": [
+            "| Parameter | Value |",
+            "|---|---|",
+            "| **Age / Sex** | 59-year-old male |",
+            "| **Smoking history** | Ex-smoker (30 pack-year history, ceased 4 years prior) |",
+            "| **Histology** | Non-small cell lung carcinoma (adenocarcinoma, PD-L1 TPS 40%) |",
+            "| **Stage** | T3 N2 M0 (AJCC 8th ed. Stage IIIB) — bulky left lower lobe primary (6.2 cm) with ipsilateral mediastinal lymphadenopathy (station 7, short axis 2.1 cm) |",
+            "| **ECOG Performance Status** | 2 |",
+            "| **Pulmonary function** | Severe COPD — FEV₁ 0.9 L (38% predicted), DLCO 42% predicted, home O₂ at rest |",
+            "| **Relevant comorbidities** | Active autoimmune hepatitis on low-dose prednisolone and azathioprine; ischaemic heart disease (CABG × 3, 2019) |",
+            "| **Presenting symptoms** | Haemoptysis (daily for 3 weeks), persistent productive cough, progressive exertional dyspnoea (mMRC 3) |",
+            "| **MDT recommendation** | Not suitable for definitive concurrent chemoradiotherapy or immunotherapy. Recommended high-dose palliative RT for local symptom control and durable disease suppression. |",
+            "| **Prescription** | 40 Gy in 10 daily fractions (BED₁₀ = 56.0 Gy) |",
+            "| **Technique** | Volumetric modulated arc therapy (VMAT) |",
+            "| **Concurrent systemic therapy** | Nil — assume no concurrent systemic therapy for this challenge |"
+         ]
+      },
+      {
+         "id": "clinical_intent",
+         "title": "Treatment Approach",
+         "body_markdown_lines": [
+            "This case uses a **standard-fractionation high-dose palliative regimen** (40 Gy / 10 fx, BED₁₀ 56.0 Gy) rather than a stereotactic approach. The distinction is clinically important and drives the planning constraints.",
+            "",
+            "**Why this regimen was chosen:**",
+            "",
+            "The 40 Gy / 10 fx schedule bridges the gap between conventional low-dose palliation (e.g. 20 Gy / 5 fx) and definitive-dose treatment. It offers a higher probability of durable local control without the OAR dose intensity of a definitive regimen — appropriate for a patient whose comorbidity profile (severe COPD, immunosuppression) precludes concurrent systemic therapy.",
+            "",
+            "**Planning implications:**",
+            "",
+            "- OAR constraints are derived from conventional fractionation tolerances, not SBRT-specific limits.",
+            "- The larger PTV and conventional margins mean the planner must manage broad low-dose wash and competing serial OAR priorities simultaneously.",
+            "- The goal is a reproducible, peer-reviewable VMAT plan that balances coverage against OAR protection — not maximal ablative dose.",
+            "",
+            "See **Supplementary** for the full regimen rationale and evidence base."
+         ]
+      }
+   ],
+   "crosslinks": {
+      "next": {
+         "page_id": "calculator",
+         "label": "Next: Scoring Calculator"
+      },
+      "prev": {
+         "page_id": "introduction",
+         "label": "Back: Introduction"
+      }
+   }
+}

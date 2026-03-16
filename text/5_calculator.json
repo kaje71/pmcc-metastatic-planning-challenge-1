@@ -1,0 +1,451 @@
+{
+    "schema_version": "1.1",
+    "challenge": {
+        "name": "PMCC Metastatic Planning Challenge #1 - Thorax",
+        "prescription": {
+            "total_dose_Gy": 40.0,
+            "fractions": 10,
+            "dose_per_fraction_Gy": 4.0
+        },
+        "targets": {
+            "included": [
+                "iGTV_Tumour",
+                "iGTV_Mediastinal_Node",
+                "iGTV_Hilar_Node_L",
+                "PTV_4000"
+            ],
+            "ptv_definition_note": "PTV_4000 encompasses all iGTV volumes plus margin."
+        },
+        "scoring": {
+            "total_weight": 150,
+            "bin_logic_notes": [
+                "For higher-is-better metrics: bins are defined by increasing minimum thresholds (e.g., V40 >= 100 is ideal).",
+                "For lower-is-better metrics: bins are defined by decreasing maximum thresholds (e.g., D0.03cc <= 28 is ideal).",
+                "OAR constraints from Chow et al. (2025) Supplementary Table S1 are positioned as the 'acceptable' bin threshold.",
+                "Reporting-only metrics (weight 0) collect data but do not contribute to the total score."
+            ]
+        }
+    },
+    "rubric_version": "v2.0.0",
+    "rubric_name": "PMCC Metastatic Planning Challenge #1 - Thorax - Scorecard (Chow OAR Focus)",
+    "last_updated": "2026-03-15",
+    "scoring_model": {
+        "type": "ordinal_bins",
+        "description": "Each metric is assigned points based on which bin the entered value falls into. Bin labels are ordered from worst to best. Total score is the sum of per-metric points. OAR thresholds from Chow et al. are set as the acceptable tier with linear scaling above and below.",
+        "bin_order": [
+            "unacceptable",
+            "marginal",
+            "acceptable",
+            "good",
+            "ideal"
+        ],
+        "notes": [
+            "Some metrics intentionally omit intermediate bins (e.g., only unacceptable/acceptable/ideal). Missing bins are treated as 'not applicable' for that metric.",
+            "Safety-gate metrics (spinal canal, spinal canal PRV) must pass; the calculator flags any gate failures prominently.",
+            "Reporting-only metrics have weight 0 and no bins. They accept a value for recording but do not affect the score."
+        ]
+    },
+    "metrics": [
+        {
+            "id": 1,
+            "weight": 12,
+            "structure": "iGTV_Tumour",
+            "statistic": "V40Gy",
+            "unit": "%",
+            "direction": "higher_is_better",
+            "bins": [
+                { "label": "unacceptable", "lt": 95 },
+                { "label": "marginal", "gte": 95, "lt": 98 },
+                { "label": "acceptable", "gte": 98, "lt": 99 },
+                { "label": "good", "gte": 99, "lt": 100 },
+                { "label": "ideal", "gte": 100 }
+            ],
+            "category": "Target coverage - iGTV",
+            "hard_gate": false,
+            "display_name": "iGTV_Tumour V40Gy"
+        },
+        {
+            "id": 2,
+            "weight": 12,
+            "structure": "iGTV_Mediastinal_Node",
+            "statistic": "V40Gy",
+            "unit": "%",
+            "direction": "higher_is_better",
+            "bins": [
+                { "label": "unacceptable", "lt": 95 },
+                { "label": "marginal", "gte": 95, "lt": 98 },
+                { "label": "acceptable", "gte": 98, "lt": 99 },
+                { "label": "good", "gte": 99, "lt": 100 },
+                { "label": "ideal", "gte": 100 }
+            ],
+            "category": "Target coverage - iGTV",
+            "hard_gate": false,
+            "display_name": "iGTV_Mediastinal_Node V40Gy"
+        },
+        {
+            "id": 3,
+            "weight": 12,
+            "structure": "iGTV_Hilar_Node_L",
+            "statistic": "V40Gy",
+            "unit": "%",
+            "direction": "higher_is_better",
+            "bins": [
+                { "label": "unacceptable", "lt": 95 },
+                { "label": "marginal", "gte": 95, "lt": 98 },
+                { "label": "acceptable", "gte": 98, "lt": 99 },
+                { "label": "good", "gte": 99, "lt": 100 },
+                { "label": "ideal", "gte": 100 }
+            ],
+            "category": "Target coverage - iGTV",
+            "hard_gate": false,
+            "display_name": "iGTV_Hilar_Node_L V40Gy"
+        },
+        {
+            "id": 4,
+            "weight": 8,
+            "structure": "PTV_4000",
+            "statistic": "V38Gy",
+            "unit": "%",
+            "direction": "higher_is_better",
+            "bins": [
+                { "label": "unacceptable", "lt": 90 },
+                { "label": "marginal", "gte": 90, "lt": 95 },
+                { "label": "acceptable", "gte": 95, "lt": 98 },
+                { "label": "good", "gte": 98, "lt": 100 },
+                { "label": "ideal", "gte": 100 }
+            ],
+            "category": "Target coverage - PTV",
+            "hard_gate": false,
+            "display_name": "PTV_4000 V38Gy"
+        },
+        {
+            "id": 5,
+            "weight": 15,
+            "structure": "SpinalCanal",
+            "statistic": "D0.03cc",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 30.9 },
+                { "label": "acceptable", "lte": 30.9, "gt": 28.0 },
+                { "label": "ideal", "lte": 28.0 }
+            ],
+            "category": "Critical OAR - Spinal canal",
+            "hard_gate": true,
+            "display_name": "SpinalCanal D0.03cc"
+        },
+        {
+            "id": 6,
+            "weight": 10,
+            "structure": "SpinalCanal_PRV",
+            "statistic": "D0.03cc",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 34.0 },
+                { "label": "acceptable", "lte": 34.0 }
+            ],
+            "category": "Critical OAR - Spinal canal",
+            "hard_gate": true,
+            "display_name": "SpinalCanal_PRV D0.03cc"
+        },
+        {
+            "id": 7,
+            "weight": 12,
+            "structure": "Lungs-iGTV",
+            "statistic": "Dmean",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 17.3 },
+                { "label": "marginal", "lte": 17.3, "gt": 16.0 },
+                { "label": "acceptable", "lte": 16.0, "gt": 14.0 },
+                { "label": "good", "lte": 14.0, "gt": 12.0 },
+                { "label": "ideal", "lte": 12.0 }
+            ],
+            "category": "OAR - Lungs",
+            "hard_gate": false,
+            "display_name": "Lungs-iGTV Dmean"
+        },
+        {
+            "id": 8,
+            "weight": 10,
+            "structure": "Lungs-iGTV",
+            "statistic": "V16Gy",
+            "unit": "%",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 37.0 },
+                { "label": "marginal", "lte": 37.0, "gt": 30.0 },
+                { "label": "acceptable", "lte": 30.0, "gt": 24.0 },
+                { "label": "good", "lte": 24.0, "gt": 18.0 },
+                { "label": "ideal", "lte": 18.0 }
+            ],
+            "category": "OAR - Lungs",
+            "hard_gate": false,
+            "display_name": "Lungs-iGTV V16Gy"
+        },
+        {
+            "id": 9,
+            "weight": 6,
+            "structure": "Lungs-iGTV",
+            "statistic": "V4.5Gy",
+            "unit": "%",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 70.0 },
+                { "label": "marginal", "lte": 70.0, "gt": 60.0 },
+                { "label": "acceptable", "lte": 60.0, "gt": 52.0 },
+                { "label": "good", "lte": 52.0, "gt": 45.0 },
+                { "label": "ideal", "lte": 45.0 }
+            ],
+            "category": "OAR - Lungs",
+            "hard_gate": false,
+            "display_name": "Lungs-iGTV V4.5Gy"
+        },
+        {
+            "id": 10,
+            "weight": 12,
+            "structure": "Heart",
+            "statistic": "Dmean",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 28.0 },
+                { "label": "marginal", "lte": 28.0, "gt": 23.4 },
+                { "label": "acceptable", "lte": 23.4, "gt": 15.6 },
+                { "label": "good", "lte": 15.6, "gt": 10.0 },
+                { "label": "ideal", "lte": 10.0 }
+            ],
+            "category": "OAR - Heart",
+            "hard_gate": false,
+            "display_name": "Heart Dmean"
+        },
+        {
+            "id": 11,
+            "weight": 1,
+            "structure": "Heart",
+            "statistic": "V19.5Gy",
+            "unit": "%",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 15.0 },
+                { "label": "marginal", "lte": 15.0, "gt": 10.0 },
+                { "label": "acceptable", "lte": 10.0, "gt": 7.5 },
+                { "label": "good", "lte": 7.5, "gt": 5.0 },
+                { "label": "ideal", "lte": 5.0 }
+            ],
+            "category": "OAR - Heart",
+            "hard_gate": false,
+            "display_name": "Heart V19.5Gy"
+        },
+        {
+            "id": 12,
+            "weight": 6,
+            "structure": "Heart",
+            "statistic": "V39Gy",
+            "unit": "%",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 30.0 },
+                { "label": "marginal", "lte": 30.0, "gt": 25.0 },
+                { "label": "acceptable", "lte": 25.0, "gt": 20.0 },
+                { "label": "good", "lte": 20.0, "gt": 15.0 },
+                { "label": "ideal", "lte": 15.0 }
+            ],
+            "category": "OAR - Heart",
+            "hard_gate": false,
+            "display_name": "Heart V39Gy"
+        },
+        {
+            "id": 13,
+            "weight": 12,
+            "structure": "Esophagus",
+            "statistic": "Dmean",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 30.0 },
+                { "label": "marginal", "lte": 30.0, "gt": 26.5 },
+                { "label": "acceptable", "lte": 26.5, "gt": 20.0 },
+                { "label": "good", "lte": 20.0, "gt": 15.0 },
+                { "label": "ideal", "lte": 15.0 }
+            ],
+            "category": "OAR - Oesophagus",
+            "hard_gate": false,
+            "display_name": "Esophagus Dmean"
+        },
+        {
+            "id": 14,
+            "weight": 10,
+            "structure": "Esophagus",
+            "statistic": "D0.03cc",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 44.0 },
+                { "label": "marginal", "lte": 44.0, "gt": 42.0 },
+                { "label": "acceptable", "lte": 42.0, "gt": 40.0 },
+                { "label": "good", "lte": 40.0, "gt": 38.0 },
+                { "label": "ideal", "lte": 38.0 }
+            ],
+            "category": "OAR - Oesophagus",
+            "hard_gate": false,
+            "display_name": "Esophagus D0.03cc"
+        },
+        {
+            "id": 15,
+            "weight": 12,
+            "structure": "Patient-PTV4000",
+            "statistic": "D1.00cc",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 44.0 },
+                { "label": "marginal", "lte": 44.0, "gt": 42.0 },
+                { "label": "acceptable", "lte": 42.0, "gt": 41.0 },
+                { "label": "good", "lte": 41.0, "gt": 40.0 },
+                { "label": "ideal", "lte": 40.0 }
+            ],
+            "category": "Plan quality",
+            "hard_gate": false,
+            "display_name": "Patient-PTV4000 D1.00cc"
+        },
+        {
+            "id": 16,
+            "weight": 0,
+            "structure": "Trachea",
+            "statistic": "D0.03cc",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [],
+            "category": "Reporting only",
+            "hard_gate": false,
+            "reporting_only": true,
+            "display_name": "Trachea D0.03cc"
+        },
+        {
+            "id": 17,
+            "weight": 0,
+            "structure": "BrachialPlexus_R_05",
+            "statistic": "D0.03cc",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [],
+            "category": "Reporting only",
+            "hard_gate": false,
+            "reporting_only": true,
+            "display_name": "BrachialPlexus_R_05 D0.03cc"
+        }
+    ],
+    "calculator_page": {
+        "schema_version": "1.0",
+        "page": {
+            "id": "calculator",
+            "order": 5,
+            "nav_label": "Scoring Calculator",
+            "title": "Scoring Calculator",
+            "subtitle": "Enter DVH metrics, see your score, and track improvement"
+        },
+        "sections": [
+            {
+                "id": "intro",
+                "title": "Purpose",
+                "body_markdown_lines": [
+                    "Use this calculator to turn your plan's DVH metrics into a single, transparent score (out of **150**), using the fixed scorecard for this challenge.",
+                    "",
+                    "The intent is **education and benchmarking**: practise making defensible trade-offs quickly, then track improvement over repeated attempts."
+                ]
+            },
+            {
+                "id": "how_it_works",
+                "title": "How Scoring Works",
+                "body_markdown_lines": [
+                    "- Each line item has a **weight** (clinical importance).",
+                    "- Your entered value lands in a **bin** (unacceptable → ideal).",
+                    "- The calculator converts that bin into points for that metric, then totals everything.",
+                    "- Points are assigned by bin position: unacceptable=0%, marginal=25%, acceptable=50%, good=75%, ideal=100% of the metric weight. For 3-bin metrics: 0%, 50%, 100%. For 2-bin metrics: 0%, 100%.",
+                    "",
+                    "Two metrics are marked as **safety gates** (spinal canal and spinal canal PRV). A high score is meaningless if a safety gate is failed.",
+                    "",
+                    "Reporting-only metrics (Trachea, Brachial Plexus R PRV) accept a value for your records but do not contribute to the total score."
+                ]
+            },
+            {
+                "id": "how_to_measure",
+                "title": "How to Measure Inputs",
+                "body_markdown_lines": [
+                    "1. Open your plan's **DVH** (or the equivalent DVH/structure statistics in your TPS).",
+                    "2. Confirm you are reading **physical dose (Gy)**, not EQD2/BED.",
+                    "3. For each structure listed in the scorecard, record the required statistic:",
+                    "   - **VxGy (%)**: percentage volume receiving at least *x* Gy.",
+                    "   - **Dmean (Gy)**: mean dose.",
+                    "   - **D0.03cc (Gy)**: near-maximum dose to a small absolute volume.",
+                    "   - **D1.00cc (Gy)**: dose to 1.00 cc of the structure.",
+                    "4. Enter the numbers exactly as displayed. Use consistent rounding across attempts (e.g. one decimal place)."
+                ]
+            },
+            {
+                "id": "evidence_alignment",
+                "title": "Evidence Alignment",
+                "body_markdown_lines": [
+                    "OAR constraints are derived from Chow et al. (2025) Supplementary Table S1. These published values are positioned as the **acceptable** tier in this scorecard. Better-than-published performance scores higher; worse scores lower.",
+                    "",
+                    "**Key Chow paper constraints (= acceptable tier):**",
+                    "- Spinal canal D0.03cc ≤ 30.9 Gy (hard safety gate)",
+                    "- Spinal canal PRV D0.03cc ≤ 34.0 Gy (hard safety gate)",
+                    "- Lungs−iGTV: Dmean ≤ 16 Gy, V16Gy ≤ 30%, V4.5Gy ≤ 60%",
+                    "- Heart: Dmean ≤ 23.4 Gy, V19.5Gy ≤ 10% (if achievable), V39Gy ≤ 25%",
+                    "- Oesophagus: Dmean ≤ 26.5 Gy"
+                ]
+            },
+            {
+                "id": "interpretation",
+                "title": "Interpreting Your Score",
+                "body_markdown_lines": [
+                    "- **First pass goal:** everything at least **acceptable**, and **all safety gates passed**.",
+                    "- **Next:** improve one metric at a time (high-weight targets, lung dose, oesophagus Dmean) without breaking a gate.",
+                    "- **Reality check:** the best plan is not always the highest score; use the score to make your trade-offs visible, not to override clinical judgement."
+                ]
+            },
+            {
+                "id": "history",
+                "title": "Saving Attempts (Personal History)",
+                "body_markdown_lines": [
+                    "Your saved attempts store **numbers and scores only** (no patient identifiers). Use notes for learning points, not clinical details:",
+                    "",
+                    "- \"Reduced oesophagus overlap with slight posterior shift; spinal canal PRV improved by 1.2 Gy.\"",
+                    "- \"Switched to 2-arc partial; lung V16Gy improved without increasing heart Dmean.\"",
+                    "",
+                    "Use the **View history** button below to open your saved attempts."
+                ]
+            },
+            {
+                "id": "disclaimer",
+                "title": "Important",
+                "body_markdown_lines": [
+                    "This tool is for **education/self-audit**. It does not replace local protocols, peer review, physics checks, or clinician decision-making."
+                ]
+            },
+            {
+                "id": "reflection_prompts",
+                "title": "Reflect on Your Plan",
+                "body_markdown_lines": [
+                    "After saving your attempt, take a few minutes to consider these questions. They are designed to encourage deliberate practice — not to score you further.",
+                    "",
+                    "1. **Which trade-off cost you the most points?** Could you have made a different choice that preserved more of the competing metric without breaking a safety gate?",
+                    "2. **If you had to re-plan for the same patient tomorrow, what would you change first?** Identify the single highest-impact optimisation step you would try.",
+                    "3. **Would you accept this plan for a real patient?** If your answer differs from what the scorecard says, think about what the scorecard does not capture (e.g. deliverability, setup uncertainty, patient preference).",
+                    "4. **What surprised you?** Was there a metric that was harder (or easier) to achieve than you expected? What does that tell you about this anatomy or this regimen?"
+                ]
+            }
+        ],
+        "crosslinks": {
+            "next": null,
+            "prev": {
+                "page_id": "clinical_case",
+                "label": "Back: Clinical case"
+            }
+        }
+    }
+}

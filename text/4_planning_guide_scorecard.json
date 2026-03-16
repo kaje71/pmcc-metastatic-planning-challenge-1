@@ -1,0 +1,31 @@
+{
+    "schema_version": "1.0",
+    "page": {
+        "id": "planning_guide",
+        "order": 4,
+        "nav_label": "Scoring Rules",
+        "title": "Scoring Rules",
+        "subtitle": "The fixed scoring matrix used to evaluate plan quality"
+    },
+    "sections": [
+        {
+            "id": "how_scoring_works",
+            "title": "How This Scorecard Works",
+            "body_markdown_lines": [
+                "Every metric in the matrix below is scored on a **5-level scale** (unacceptable → marginal → acceptable → good → ideal), each weighted by clinical importance. Your total score is the sum of weighted bin scores across all metrics.",
+                "",
+                "The scorecard is **fixed for every participant**: same structures, same thresholds, same weights. This makes scores directly comparable and trade-offs visible."
+            ]
+        }
+    ],
+    "crosslinks": {
+        "next": {
+            "page_id": "calculator",
+            "label": "Next: Scoring calculator"
+        },
+        "prev": {
+            "page_id": "clinical_case",
+            "label": "Back: Clinical case"
+        }
+    }
+}

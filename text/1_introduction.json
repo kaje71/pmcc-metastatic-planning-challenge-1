@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "page": {
+    "id": "introduction",
+    "order": 1,
+    "nav_label": "Introduction",
+    "title": "Welcome",
+    "subtitle": "Overview of the PMCC Metastatic Planning Challenge series and how to get started",
+    "audience": "Radiation therapists, dosimetrists and medical physicists"
+  },
+  "sections": [
+    {
+      "id": "clinical_rationale",
+      "title": "Clinical Rationale",
+      "body_markdown_lines": [
+        "Palliative VMAT planning presents a unique set of challenges. Complex target geometries, competing OAR priorities, limited published dose-constraint data, and fast turnaround expectations all converge — often in cases where the planner has had limited previous exposure to the specific clinical scenario.",
+        "",
+        "At the same time, significant improvements in systemic therapies mean that many patients now live considerably longer than historical palliative cohorts. This has real consequences for planning: patients are more likely to experience late side effects from their radiation, and a growing number will become candidates for reirradiation. Plans that were once considered adequate for a short prognosis now need to account for a longer horizon.",
+        "",
+        "Planning challenges let us practise this decision-making deliberately — with a safety net, a shared scoring language, and the space to develop judgement before it is needed under clinical pressure."
+      ]
+    },
+    {
+      "id": "learning_objectives",
+      "title": "Learning Objectives",
+      "body_markdown_lines": [
+        "By the end of this challenge you will be able to:",
+        "",
+        "1. **Respect hard OAR limits when the margin for error is thin** — the cord is near the BED₃ myelopathy threshold at this fractionation, so there is no room to negotiate on max dose.",
+        "2. **Make deliberate coverage trade-offs when multiple targets compete for the same OAR space** — three separate target volumes overlap the mediastinum, and every concession to one structure costs dose somewhere else.",
+        "3. **Control low-dose lung wash in a patient who cannot afford pneumonitis** — with an FEV₁ of 38% and no systemic therapy options, keeping Dmean and V16Gy low is not aspirational, it is the whole point of the plan."
+      ]
+    },
+    {
+      "id": "challenge_1_thorax",
+      "title": "Challenge #1 — Thorax",
+      "body_markdown_lines": [
+        "### The prescription: 40 Gy in 10 fractions",
+        "Clinicians frequently face a binary framing: conventional palliation (e.g. 30 Gy/10 fx, BED₁₀ = 39.0 Gy) versus radical-intent treatment (60 Gy/30 fx or SBRT). The 40 Gy in 10 fraction regimen (BED₁₀ = 56.0 Gy) addresses the critical **grey zone** — patients with large (>5 cm) or ultracentral thoracic tumours who need durable local control but cannot safely receive definitive chemoradiation or meet strict SBRT eligibility criteria.",
+        "",
+        "The ~43% increase in biological dose over 30 Gy/10 fx pushes tumour control probability toward the ablative range for many NSCLC histologies, while retaining enough fractionation to treat large volumes safely. Published data (Chow et al. 2025; n = 62) demonstrate a 69.3% overall response rate, 96.7% one-year local control, and 76.9% three-year local control with an acceptable toxicity profile.",
+        "",
+        "### What the safety data tell us",
+        "In the published cohort, 46.7% of patients developed Grade 1–2 radiation pneumonitis — a rate that reflects the large treatment volumes rather than clinical severity, as no Grade ≥3 pneumonitis occurred. The low incidence of significant oesophageal toxicity (1.6% Grade 3) confirms that modern VMAT technique can carve high-dose gradients safely in the mediastinum, provided OAR constraints are respected.",
+        "",
+        "### Planning for the patient's future",
+        "Despite the palliative intent, improvements in systemic therapy mean many patients now survive long enough to experience late normal-tissue effects or require retreatment to the same region. This has direct planning implications:",
+        "",
+        "- **Minimise dose to serial OARs beyond what the scorecard requires** — every Grey saved now is retreatment headroom later.",
+        "- **Keep lung Dmean and V16Gy as low as achievable** — cumulative pneumonitis risk compounds with subsequent systemic immunotherapy cycles.",
+        "- **Document your plan clearly** — so a future planner or clinician can understand the dose distribution without re-planning from scratch.",
+        "",
+        "This challenge asks you to plan as though the patient will live longer than historical palliative cohorts — because, increasingly, they do."
+      ]
+    }
+  ],
+  "crosslinks": {
+    "next": {
+      "page_id": "clinical_case",
+      "label": "Next: Clinical case"
+    },
+    "prev": null
+  }
+}
