@@ -372,34 +372,6 @@
                 ]
             },
             {
-                "id": "how_to_measure",
-                "title": "How to Measure Inputs",
-                "body_markdown_lines": [
-                    "1. Open your plan's **DVH** (or the equivalent DVH/structure statistics in your TPS).",
-                    "2. Confirm you are reading **physical dose (Gy)**, not EQD2/BED.",
-                    "3. For each structure listed in the scorecard, record the required statistic:",
-                    "   - **VxGy (%)**: percentage volume receiving at least *x* Gy.",
-                    "   - **Dmean (Gy)**: mean dose.",
-                    "   - **D0.03cc (Gy)**: near-maximum dose to a small absolute volume.",
-                    "   - **D1.00cc (Gy)**: dose to 1.00 cc of the structure.",
-                    "4. Enter the numbers exactly as displayed. Use consistent rounding across attempts (e.g. one decimal place)."
-                ]
-            },
-            {
-                "id": "evidence_alignment",
-                "title": "Evidence Alignment",
-                "body_markdown_lines": [
-                    "OAR constraints are derived from Chow et al. (2025) Supplementary Table S1. These published values are positioned as the **acceptable** tier in this scorecard. Better-than-published performance scores higher; worse scores lower.",
-                    "",
-                    "**Key Chow paper constraints (= acceptable tier):**",
-                    "- Spinal canal D0.03cc ≤ 30.9 Gy (hard safety gate)",
-                    "- Spinal canal PRV D0.03cc ≤ 34.0 Gy (hard safety gate)",
-                    "- Lungs−iGTV: Dmean ≤ 16 Gy, V16Gy ≤ 30%, V4.5Gy ≤ 60%",
-                    "- Heart: Dmean ≤ 23.4 Gy, V19.5Gy ≤ 10% (if achievable), V39Gy ≤ 25%",
-                    "- Oesophagus: Dmean ≤ 26.5 Gy"
-                ]
-            },
-            {
                 "id": "interpretation",
                 "title": "Interpreting Your Score",
                 "body_markdown_lines": [
