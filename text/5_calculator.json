@@ -26,7 +26,7 @@
             ]
         }
     },
-    "rubric_version": "v2.0.0",
+    "rubric_version": "v2.1.0",
     "rubric_name": "PMCC Metastatic Planning Challenge #1 - Thorax - Scorecard (Chow OAR Focus)",
     "last_updated": "2026-03-15",
     "scoring_model": {
@@ -48,7 +48,7 @@
     "metrics": [
         {
             "id": 1,
-            "weight": 12,
+            "weight": 10,
             "structure": "iGTV_Tumour",
             "statistic": "V40Gy",
             "unit": "%",
@@ -66,7 +66,7 @@
         },
         {
             "id": 2,
-            "weight": 12,
+            "weight": 10,
             "structure": "iGTV_Mediastinal_Node",
             "statistic": "V40Gy",
             "unit": "%",
@@ -84,7 +84,7 @@
         },
         {
             "id": 3,
-            "weight": 12,
+            "weight": 10,
             "structure": "iGTV_Hilar_Node_L",
             "statistic": "V40Gy",
             "unit": "%",
@@ -117,6 +117,40 @@
             "category": "Target coverage - PTV",
             "hard_gate": false,
             "display_name": "PTV_4000 V38Gy"
+        },
+        {
+            "id": 18,
+            "weight": 4,
+            "structure": "PTV_4000",
+            "statistic": "D2.0%",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 44.0 },
+                { "label": "marginal", "lte": 44.0, "gt": 42.0 },
+                { "label": "acceptable", "lte": 42.0, "gt": 41.0 },
+                { "label": "ideal", "lte": 41.0 }
+            ],
+            "category": "Target homogeneity - PTV",
+            "hard_gate": false,
+            "display_name": "PTV_4000 D2.0%"
+        },
+        {
+            "id": 19,
+            "weight": 4,
+            "structure": "PTV_4000",
+            "statistic": "D0.03cc",
+            "unit": "Gy",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 44.0 },
+                { "label": "marginal", "lte": 44.0, "gt": 42.8 },
+                { "label": "acceptable", "lte": 42.8, "gt": 41.5 },
+                { "label": "ideal", "lte": 41.5 }
+            ],
+            "category": "Target homogeneity - PTV",
+            "hard_gate": false,
+            "display_name": "PTV_4000 D0.03cc"
         },
         {
             "id": 5,
@@ -295,7 +329,7 @@
         },
         {
             "id": 15,
-            "weight": 12,
+            "weight": 10,
             "structure": "Patient-PTV4000",
             "statistic": "D1.00cc",
             "unit": "Gy",
