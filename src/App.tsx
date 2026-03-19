@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { PasswordGate, usePasswordGate } from './components/PasswordGate';
 import { ClinicalCase } from './components/views/ClinicalCase';
 import { Supplementary } from './components/views/Supplementary';
 import {
@@ -29,6 +30,7 @@ import './index.css';
 
 
 export default function App() {
+  const [authenticated, setAuthenticated] = usePasswordGate();
   const [activeTab, setActiveTab] = useState<TabId>('introduction');
   // Load attempts for history/leaderboard (readonly for now as saving is handled internally by calculator)
   const [attempts] = useState<SavedAttempt[]>(() => {
@@ -82,6 +84,10 @@ export default function App() {
     window.addEventListener('pal:navigate', handler as EventListener);
     return () => window.removeEventListener('pal:navigate', handler as EventListener);
   }, [navItems]);
+
+  if (!authenticated) {
+    return <PasswordGate onAuthenticated={() => setAuthenticated(true)} />;
+  }
 
   return (
     <ToastProvider>
