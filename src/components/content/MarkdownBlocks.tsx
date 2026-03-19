@@ -9,6 +9,7 @@ type Block =
   | { type: 'ul'; items: string[] }
   | { type: 'ol'; items: string[] }
   | { type: 'table'; rows: string[][] }
+  | { type: 'image'; alt: string; src: string }
   | { type: 'spacer' };
 
 function parseTable(lines: string[]): string[][] {
@@ -48,6 +49,14 @@ function tokenize(lines: string[]): Block[] {
       }
       const rows = parseTable(tableLines);
       blocks.push({ type: 'table', rows });
+      continue;
+    }
+
+    // Image: ![alt](src)
+    const imgMatch = trimmed.match(/^!\[(.*)\]\((.+)\)$/);
+    if (imgMatch) {
+      blocks.push({ type: 'image', alt: imgMatch[1], src: imgMatch[2] });
+      i += 1;
       continue;
     }
 
@@ -263,6 +272,23 @@ export function MarkdownBlocks({ lines }: { lines: string[] }) {
                   </table>
                 </div>
               </div>
+            );
+
+          case 'image':
+            return (
+              <figure key={idx} className="my-4">
+                <img
+                  src={block.src}
+                  alt={block.alt}
+                  className="w-full rounded-lg border border-slate-200 shadow-sm"
+                  loading="lazy"
+                />
+                {block.alt && (
+                  <figcaption className="mt-2 text-center text-xs text-slate-400 italic">
+                    {block.alt}
+                  </figcaption>
+                )}
+              </figure>
             );
 
           default:

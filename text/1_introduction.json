@@ -50,7 +50,9 @@
         "- **Keep lung Dmean and V16Gy as low as achievable** — cumulative pneumonitis risk compounds with subsequent systemic immunotherapy cycles.",
         "- **Document your plan clearly** — so a future planner or clinician can understand the dose distribution without re-planning from scratch.",
         "",
-        "This challenge asks you to plan as though the patient will live longer than historical palliative cohorts — because, increasingly, they do."
+        "This challenge asks you to plan as though the patient will live longer than historical palliative cohorts — because, increasingly, they do.",
+        "",
+        "![Treatment volume preview — axial, coronal, sagittal and 3D views of the target and OAR contours](./images/challenge1_volume_preview.png)"
       ]
     }
   ],
