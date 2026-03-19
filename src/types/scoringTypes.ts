@@ -29,6 +29,7 @@ export interface ScoringMetric {
     bins: Bin[];
     category?: string;
     hard_gate?: boolean;
+    boolean_input?: boolean;
     reporting_only?: boolean;
     display_name?: string;
 }

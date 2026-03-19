@@ -370,6 +370,54 @@
             "hard_gate": false,
             "reporting_only": true,
             "display_name": "BrachialPlexus_R_05 D0.03cc"
+        },
+        {
+            "id": 20,
+            "weight": 0,
+            "structure": "Deliverability",
+            "statistic": "> 3 arcs or 720°",
+            "unit": "",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 0 },
+                { "label": "acceptable", "lte": 0 }
+            ],
+            "category": "Deliverability Gate",
+            "hard_gate": true,
+            "boolean_input": true,
+            "display_name": "Deliverability > 3 arcs or 720°"
+        },
+        {
+            "id": 21,
+            "weight": 0,
+            "structure": "Deliverability",
+            "statistic": "Floor kicks",
+            "unit": "",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 0 },
+                { "label": "acceptable", "lte": 0 }
+            ],
+            "category": "Deliverability Gate",
+            "hard_gate": true,
+            "boolean_input": true,
+            "display_name": "Deliverability Floor kicks"
+        },
+        {
+            "id": 22,
+            "weight": 0,
+            "structure": "Deliverability",
+            "statistic": "Modulation > 5.0",
+            "unit": "",
+            "direction": "lower_is_better",
+            "bins": [
+                { "label": "unacceptable", "gt": 0 },
+                { "label": "acceptable", "lte": 0 }
+            ],
+            "category": "Deliverability Gate",
+            "hard_gate": true,
+            "boolean_input": true,
+            "display_name": "Deliverability Modulation > 5.0"
         }
     ],
     "calculator_page": {

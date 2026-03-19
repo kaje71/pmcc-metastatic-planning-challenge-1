@@ -58,6 +58,7 @@ const CATEGORY_ORDER = [
     { label: 'Heart', structures: ['Heart'] },
     { label: 'Oesophagus', structures: ['Esophagus'] },
     { label: 'Plan Quality', structures: ['Patient-PTV4000'] },
+    { label: 'Deliverability Gates', structures: ['Deliverability'] },
     { label: 'Reporting Only', structures: ['Trachea', 'BrachialPlexus_R_05'] },
 ];
 
@@ -531,27 +532,52 @@ export function ScoreCalculator() {
                                                                     <label htmlFor={fieldId} className="sr-only">
                                                                         {STRUCTURE_DISPLAY_NAMES[metric.structure] || metric.structure} {metric.statistic} ({metric.unit})
                                                                     </label>
-                                                                    <input
-                                                                        id={fieldId}
-                                                                        type="text"
-                                                                        inputMode="decimal"
-                                                                        value={inputs[metric.id] || ''}
-                                                                        onChange={(e) => handleChange(metric.id, e.target.value)}
-                                                                        placeholder="--"
-                                                                        aria-invalid={inputWarnings[metric.id] ? 'true' : undefined}
-                                                                        aria-describedby={inputWarnings[metric.id] ? `${fieldId}-warning` : undefined}
-                                                                        className={clsx(
-                                                                            "w-full text-center px-2 py-2 text-sm font-bold border-2 rounded-lg transition-all",
-                                                                            "bg-white placeholder:text-slate-300",
-                                                                            "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-purple-500",
-                                                                            inputWarnings[metric.id]
-                                                                                ? "border-amber-400 bg-amber-50"
-                                                                                : isReporting ? "border-slate-200" : rowColors.border
-                                                                        )}
-                                                                    />
-                                                                    <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 pointer-events-none">
-                                                                        {metric.unit}
-                                                                    </span>
+                                                                    {metric.boolean_input ? (
+                                                                        <select
+                                                                            id={fieldId}
+                                                                            value={inputs[metric.id] !== undefined ? inputs[metric.id] : ''}
+                                                                            onChange={(e) => handleChange(metric.id, e.target.value)}
+                                                                            aria-invalid={inputWarnings[metric.id] ? 'true' : undefined}
+                                                                            aria-describedby={inputWarnings[metric.id] ? `${fieldId}-warning` : undefined}
+                                                                            className={clsx(
+                                                                                "w-full text-center pl-2 pr-6 py-2 text-sm font-bold border-2 rounded-lg transition-all appearance-none bg-no-repeat",
+                                                                                "bg-white",
+                                                                                "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-purple-500",
+                                                                                inputWarnings[metric.id]
+                                                                                    ? "border-amber-400 bg-amber-50"
+                                                                                    : rowColors.border
+                                                                            )}
+                                                                            style={{ backgroundPosition: 'right 0.5rem center', backgroundSize: '1.2em 1.2em', backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3A%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3A%2224%22%20height%3A%2224%22%20viewBox%3A%220%200%2024%2024%22%20fill%3A%22none%22%20stroke%3A%22%2364748b%22%20stroke-width%3A%222%22%20stroke-linecap%3A%22round%22%20stroke-linejoin%3A%22round%22%3E%3Cpolyline%20points%3A%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E")' }}
+                                                                        >
+                                                                            <option value="">--</option>
+                                                                            <option value="1">Yes</option>
+                                                                            <option value="0">No</option>
+                                                                        </select>
+                                                                    ) : (
+                                                                        <input
+                                                                            id={fieldId}
+                                                                            type="text"
+                                                                            inputMode="decimal"
+                                                                            value={inputs[metric.id] || ''}
+                                                                            onChange={(e) => handleChange(metric.id, e.target.value)}
+                                                                            placeholder="--"
+                                                                            aria-invalid={inputWarnings[metric.id] ? 'true' : undefined}
+                                                                            aria-describedby={inputWarnings[metric.id] ? `${fieldId}-warning` : undefined}
+                                                                            className={clsx(
+                                                                                "w-full text-center px-2 py-2 text-sm font-bold border-2 rounded-lg transition-all",
+                                                                                "bg-white placeholder:text-slate-300",
+                                                                                "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-purple-500",
+                                                                                inputWarnings[metric.id]
+                                                                                    ? "border-amber-400 bg-amber-50"
+                                                                                    : isReporting ? "border-slate-200" : rowColors.border
+                                                                            )}
+                                                                        />
+                                                                    )}
+                                                                    {!metric.boolean_input && (
+                                                                        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 pointer-events-none">
+                                                                            {metric.unit}
+                                                                        </span>
+                                                                    )}
                                                                 </div>
                                                                 {inputWarnings[metric.id] && (
                                                                     <p id={`${fieldId}-warning`} className="text-[10px] text-amber-600 mt-0.5 leading-tight">
@@ -597,7 +623,7 @@ export function ScoreCalculator() {
                             id={`${baseId}-notes`}
                             value={notes}
                             onChange={(e) => setNotes(e.target.value)}
-                            placeholder="Planning trade-offs and learning points (no patient identifiers)."
+                            placeholder="Planning trade-offs and learning points."
                             className="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm
                             focus:ring-2 focus:ring-purple-500 focus:border-purple-300 outline-none
                             min-h-[80px] resize-y placeholder:text-slate-400"

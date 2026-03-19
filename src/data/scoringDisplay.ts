@@ -24,6 +24,7 @@ export const STRUCTURE_DISPLAY_NAMES: Record<string, string> = {
     'Patient-PTV4000': 'Patient − PTV4000',
     'Trachea': 'Trachea',
     'BrachialPlexus_R_05': 'Brachial Plexus R (PRV)',
+    'Deliverability': 'Deliverability Gates',
 };
 
 // ── Bin ordering ───────────────────────────────────────────────────
