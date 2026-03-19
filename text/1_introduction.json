@@ -52,7 +52,11 @@
         "",
         "This challenge asks you to plan as though the patient will live longer than historical palliative cohorts — because, increasingly, they do.",
         "",
-        "![Treatment volume preview — axial, coronal, sagittal and 3D views of the target and OAR contours](./images/challenge1_volume_preview.png)"
+        "![Treatment volume preview — axial, coronal, sagittal and 3D views of the target and OAR contours](./images/challenge1_volume_preview.png)",
+        "",
+        "These are the primary planning goals for this challenge. Review them carefully to understand the targets and constraints before beginning your plan:",
+        "",
+        "![Planning goals summary showing targets and OAR constraints](./images/challenge1_planning_goals.png)"
       ]
     }
   ],
