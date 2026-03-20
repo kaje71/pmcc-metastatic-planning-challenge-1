@@ -452,27 +452,6 @@
                     "",
                     "Reporting-only metrics (Trachea, Brachial Plexus R PRV) accept a value for your records but do not contribute to the total score."
                 ]
-            },
-            {
-                "id": "interpretation",
-                "title": "Interpreting Your Score",
-                "body_markdown_lines": [
-                    "- **First pass goal:** everything at least **acceptable**, and **all safety gates passed**.",
-                    "- **Next:** improve one metric at a time (high-weight targets, lung dose, oesophagus Dmean) without breaking a gate.",
-                    "- **Reality check:** the best plan is not always the highest score; use the score to make your trade-offs visible, not to override clinical judgement."
-                ]
-            },
-            {
-                "id": "history",
-                "title": "Saving Attempts (Personal History)",
-                "body_markdown_lines": [
-                    "Your saved attempts store **numbers and scores only** (no patient identifiers). Use notes for learning points, not clinical details:",
-                    "",
-                    "- \"Reduced oesophagus overlap with slight posterior shift; spinal canal PRV improved by 1.2 Gy.\"",
-                    "- \"Switched to 2-arc partial; lung V16Gy improved without increasing heart Dmean.\"",
-                    "",
-                    "Use the **View history** button below to open your saved attempts."
-                ]
             }
         ],
         "crosslinks": {
