@@ -473,25 +473,6 @@
                     "",
                     "Use the **View history** button below to open your saved attempts."
                 ]
-            },
-            {
-                "id": "disclaimer",
-                "title": "Important",
-                "body_markdown_lines": [
-                    "This tool is for **education/self-audit**. It does not replace local protocols, peer review, physics checks, or clinician decision-making."
-                ]
-            },
-            {
-                "id": "reflection_prompts",
-                "title": "Reflect on Your Plan",
-                "body_markdown_lines": [
-                    "After saving your attempt, take a few minutes to consider these questions. They are designed to encourage deliberate practice — not to score you further.",
-                    "",
-                    "1. **Which trade-off cost you the most points?** Could you have made a different choice that preserved more of the competing metric without breaking a safety gate?",
-                    "2. **If you had to re-plan for the same patient tomorrow, what would you change first?** Identify the single highest-impact optimisation step you would try.",
-                    "3. **Would you accept this plan for a real patient?** If your answer differs from what the scorecard says, think about what the scorecard does not capture (e.g. deliverability, setup uncertainty, patient preference).",
-                    "4. **What surprised you?** Was there a metric that was harder (or easier) to achieve than you expected? What does that tell you about this anatomy or this regimen?"
-                ]
             }
         ],
         "crosslinks": {
