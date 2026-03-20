@@ -276,11 +276,14 @@ export function MarkdownBlocks({ lines }: { lines: string[] }) {
 
           case 'image':
             return (
-              <figure key={idx} className="my-4">
+              <figure key={idx} className="my-6">
                 <img
                   src={block.src}
                   alt={block.alt}
-                  className="w-full rounded-lg border border-slate-200 shadow-sm"
+                  className={clsx(
+                    "rounded-lg border border-slate-200 shadow-sm mx-auto",
+                    block.src.includes('planning_goals') ? "w-full sm:w-2/3 md:w-1/2 max-w-xl" : "w-full"
+                  )}
                   loading="lazy"
                 />
                 {block.alt && (
