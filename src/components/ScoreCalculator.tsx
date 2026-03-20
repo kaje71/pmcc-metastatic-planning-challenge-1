@@ -506,7 +506,9 @@ export function ScoreCalculator() {
                                                                         );
                                                                     }
 
-                                                                    const threshold = formatThreshold(bin, metric.direction);
+                                                                    const threshold = metric.boolean_input
+                                                                        ? (binKey === 'unacceptable' ? 'Yes' : 'No')
+                                                                        : formatThreshold(bin, metric.direction);
 
                                                                     return (
                                                                         <td

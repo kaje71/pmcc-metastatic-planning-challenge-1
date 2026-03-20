@@ -375,7 +375,7 @@
             "id": 20,
             "weight": 0,
             "structure": "Deliverability",
-            "statistic": "> 3 arcs or 720°",
+            "statistic": "> 4 arcs or 720°",
             "unit": "",
             "direction": "lower_is_better",
             "bins": [
@@ -385,13 +385,13 @@
             "category": "Deliverability Gate",
             "hard_gate": true,
             "boolean_input": true,
-            "display_name": "Deliverability > 3 arcs or 720°"
+            "display_name": "Deliverability > 4 arcs or 720°"
         },
         {
             "id": 21,
             "weight": 0,
             "structure": "Deliverability",
-            "statistic": "Floor kicks",
+            "statistic": "Floor kicks (not allowed)",
             "unit": "",
             "direction": "lower_is_better",
             "bins": [
